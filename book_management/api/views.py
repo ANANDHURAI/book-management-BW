@@ -12,7 +12,7 @@ from .serializers import (
     ReadingListSerializer, ReadingListDetailSerializer, ReadingListItemSerializer
 )
 
-# Authentication Views
+# authdication views
 
 
 @api_view(['POST'])
@@ -80,7 +80,7 @@ def profile(request):
             })
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# Book Management Views
+# Book Management Views for add , update , delete
 
 
 class BookListCreateView(generics.ListCreateAPIView):
@@ -127,7 +127,7 @@ class BookDetailView(generics.RetrieveUpdateDestroyAPIView):
         }, status=status.HTTP_204_NO_CONTENT)
 
 
-# Reading List Views
+# Reading List Views for CRUD
 
 class ReadingListView(generics.ListCreateAPIView):
 
@@ -259,6 +259,7 @@ def remove_book_from_reading_list(request, reading_list_id, book_id):
     return Response({
         'message': 'Book removed from reading list successfully'
     }, status=status.HTTP_204_NO_CONTENT)
+
 
 
 @api_view(['PUT'])
